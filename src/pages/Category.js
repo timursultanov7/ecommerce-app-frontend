@@ -52,14 +52,14 @@ export const Category = ({ onAdd, qty }) => {
 
   const params = useParams();
 
-  useEffect(() => {
-    window.localStorage.setItem("product", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("product", JSON.stringify(cart));
+  // }, [cart]);
 
-  useEffect(() => {
-    // setQuantity();
-    window.localStorage.setItem("qty", JSON.stringify(quantity));
-  }, [quantity]);
+  // useEffect(() => {
+  //   // setQuantity();
+  //   window.localStorage.setItem("qty", JSON.stringify(quantity));
+  // }, [quantity]);
 
   // useEffect(() => {
   //   const qty = JSON.parse(window.localStorage.getItem("qty"));

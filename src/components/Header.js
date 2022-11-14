@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect, useRef, useContext } from "react";
+import useLocalStorage from "../components/useLocalStorage";
 
 import Avatar from "@mui/material/Avatar";
 
@@ -59,6 +60,10 @@ function Header({ qty }) {
 
   const [showDrop, setShowDrop] = useState(false);
 
+  const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
+
+  // console.log(sendToLocal.length);
+
   // console.log(user[0].user_firstname);
 
   // console.log(quantity);
@@ -103,6 +108,7 @@ function Header({ qty }) {
     // document.addEventListener("click", handleDivBack, true);
 
     document.addEventListener("change", handleClickOutside, true);
+    // cartTotal();
   }, []);
   // }, [clickTarget]);
 
@@ -124,28 +130,33 @@ function Header({ qty }) {
     const sum = quantities.reduce((prev, cur) => prev + cur, 0);
     // console.log(sum);
     // setQuantity(sum);
+
+    // setSendToLocal(sum);
     return sum;
   };
 
+  // cartTotal();
   return (
     <>
-      <Navbar bg='light' expand='lg' className='navbar-fix-top bottom-border'>
-        <Container fluid className='container'>
-          <Link to='/'>
+      <Navbar bg="light" expand="lg" className="navbar-fix-top bottom-border">
+        <Container fluid className="container">
+          <Link to="/">
             <div>
-              <img className='logo-home' src={logo} alt='' />
+              <img className="logo-home" src={logo} alt="" />
             </div>
           </Link>
 
-          <Navbar.Toggle aria-controls='navbarScroll' />
+          <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse
-            id='navbarScroll'
-            className='d-flex justify-content-between'>
+            id="navbarScroll"
+            className="d-flex justify-content-between"
+          >
             <Nav
-              className='my-2 my-lg-0'
+              className="my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
-              navbarScroll>
-              <Link className='cat-btn' to='/catalogue'>
+              navbarScroll
+            >
+              <Link className="cat-btn" to="/catalogue">
                 {/* <FontAwesomeIcon icon='fa-solid fa-bars' /> */}
                 <FontAwesomeIcon icon={faBarsStaggered} /> &nbsp;
                 <span>Catalogue</span>
@@ -167,13 +178,17 @@ function Header({ qty }) {
               isOpen={isOpen}
               setIsOpen={setIsOpen}
             />
-            <div className='d-flex justify-content-md-center '>
+            <div className="d-flex justify-content-md-center ">
               {/* <Link className='cart' to='/cart'>
                 Cart <span className='cart-badge'>({cartTotal()})</span>
               </Link> */}
-              <Link className='cart color' to='/cart'>
-                <Badge badgeContent={cartTotal()} color='primary'>
-                  <FontAwesomeIcon icon={faCartShopping} size='xl' />
+              <Link className="cart color" to="/cart">
+                <Badge
+                  badgeContent={cartTotal() || sendToLocal.length}
+                  color="primary"
+                >
+                  {/* <Badge badgeContent={cartTotal()} color="primary"> */}
+                  <FontAwesomeIcon icon={faCartShopping} size="xl" />
                 </Badge>
                 <span>Cart</span>
               </Link>{" "}
@@ -181,7 +196,7 @@ function Header({ qty }) {
               {/* <Button onClick={handleShow} variant='outline-success'></Button> */}
               {isLoggedIn ? (
                 <div>
-                  <div className='avatar-container'>
+                  <div className="avatar-container">
                     <Avatar onClick={() => setShowDrop(!showDrop)}>
                       {user.map((user) => {
                         return user.user_firstname.slice(0, 1);
@@ -199,16 +214,18 @@ function Header({ qty }) {
                         maxWidth: 360,
                         bgcolor: "background.paper",
                         position: "absolute",
-                      }}>
-                      <nav aria-label='main mailbox folders'>
+                      }}
+                    >
+                      <nav aria-label="main mailbox folders">
                         <List>
                           <ListItem disablePadding>
                             <ListItemButton
-                              onClick={() => setIsLoggedIn(false)}>
+                              onClick={() => setIsLoggedIn(false)}
+                            >
                               <ListItemIcon>
                                 <FontAwesomeIcon icon={faRightFromBracket} />
                               </ListItemIcon>
-                              <ListItemText primary='Logout' />
+                              <ListItemText primary="Logout" />
                             </ListItemButton>
                           </ListItem>
                         </List>
@@ -217,8 +234,8 @@ function Header({ qty }) {
                   )}
                 </div>
               ) : (
-                <div onClick={handleShow} className='login-btn color'>
-                  <FontAwesomeIcon icon={faUser} size='xl' />
+                <div onClick={handleShow} className="login-btn color">
+                  <FontAwesomeIcon icon={faUser} size="xl" />
                   <span> Login</span>
                 </div>
               )}

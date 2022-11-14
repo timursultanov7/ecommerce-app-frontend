@@ -1,11 +1,15 @@
 /** @format */
 
 import React, { createContext, useState, useEffect } from "react";
+import useLocalStorage from "../components/useLocalStorage";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+
+  const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
+  // const [cartToLocal, setCartToLocal] = useLocalStorage(cart, "");
 
   // Local storage
 
@@ -44,9 +48,11 @@ export const CartProvider = ({ children }) => {
             : item
         )
       );
+
+      // setSendToLocal(cart);
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
-      // console.log(cart);
+      setSendToLocal(cart);
     }
   }
 
@@ -61,7 +67,8 @@ export const CartProvider = ({ children }) => {
         taxes,
         totalPrice,
         handleAdd,
-      }}>
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
