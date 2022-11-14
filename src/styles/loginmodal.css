@@ -1,0 +1,13 @@
+.submit-btn:disabled, .submit-btn[disabled] {
+
+    background-color: black !important
+
+}
+
+.err-msg {
+    color: red;
+}
+/* 
+.submit-btn {
+    background-color: green;
+} */
