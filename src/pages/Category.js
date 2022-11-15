@@ -44,38 +44,9 @@ export const Category = ({ onAdd, qty }) => {
     setCheckBoxType,
   } = useContext(CategoryContext);
 
-  console.log(catgProducts);
-
   const [searchArray, setSearchArray] = useState([]);
 
-  // const [productsQuantity, setProductsQuantity] = useState("");
-
   const params = useParams();
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("product", JSON.stringify(cart));
-  // }, [cart]);
-
-  // useEffect(() => {
-  //   // setQuantity();
-  //   window.localStorage.setItem("qty", JSON.stringify(quantity));
-  // }, [quantity]);
-
-  // useEffect(() => {
-  //   const qty = JSON.parse(window.localStorage.getItem("qty"));
-  //   if (qty) {
-  //     setQuantity(qty);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   const products = JSON.parse(localStorage.getItem("product"));
-  //   if (products) {
-  //     setCart(products);
-  //   }
-  // }, []);
-
-  // console.log(catgProducts.length);
 
   const getProducts = async () => {
     try {
@@ -85,13 +56,6 @@ export const Category = ({ onAdd, qty }) => {
       // const res = await fetch(`/api/products/${params.type}`);
       const data = await res.json();
       ////////////////////////////////////////////
-
-      // const brands = data.map((productBrand) => {
-      //   return {
-      //     brand: productBrand.product_brand,
-      //     id: productBrand.product_id,
-      //   };
-      // });
 
       const uniqueBrands = [
         ...new Map(

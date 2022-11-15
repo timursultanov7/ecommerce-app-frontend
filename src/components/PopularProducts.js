@@ -17,23 +17,6 @@ function PopularProducts({ onAdd }) {
 
   const productsToDisplay = products.length;
 
-  // const [addToCart, setAddtoCart] = useLocalStorage("key", "");
-
-  // const one = 1;
-
-  // const singleOne = productsToDisplay;
-
-  // const quantityOfSkeletons = [];
-
-  // for (let i = 1; i <= productsToDisplay; i++) {
-  //   quantityOfSkeletons.push(i);
-  // }
-
-  // console.log(quantityOfSkeletons);
-
-  // const loading = false;
-  // console.log(productsToDisplay);
-
   const limitDisplay = 4;
 
   const skeletonQuantity = [1, 2, 3, 4];
@@ -55,17 +38,7 @@ function PopularProducts({ onAdd }) {
               );
             })
           : products.slice(0, limitDisplay).map((product) => {
-              return (
-                <ProductCard
-                  key={product.product_id}
-                  // onAdd={onAdd}
-                  product={product}
-                />
-              );
-
-              {
-                /* <Testing product={product} />; */
-              }
+              return <ProductCard key={product.product_id} product={product} />;
             })}
       </div>
     </div>

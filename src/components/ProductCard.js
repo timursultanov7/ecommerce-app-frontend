@@ -16,10 +16,6 @@ const ProductCard = ({
 }) => {
   const { handleAdd } = useContext(CartContext);
 
-  // const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
-  // const { product } = product;
-  // console.log(props);
-
   return (
     <div className="product-card-wrapper">
       <div className="card">
@@ -38,13 +34,9 @@ const ProductCard = ({
         </Link>
         <button
           className="product-btn"
-          onClick={
-            () => {
-              handleAdd(product);
-              // setSendToLocal(product);
-            }
-            // onAdd(product)
-          }
+          onClick={() => {
+            handleAdd(product);
+          }}
         >
           Add to Cart
         </button>

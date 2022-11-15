@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect, useRef, useContext } from "react";
-import useLocalStorage from "../components/useLocalStorage";
+// import useLocalStorage from "../components/useLocalStorage";
 
 import Avatar from "@mui/material/Avatar";
 
@@ -50,44 +50,13 @@ function Header({ qty }) {
   const { quantity, setQuantity } = qty;
 
   const { isLoggedIn, setIsLoggedIn, user } = useContext(LoginContext);
-  // console.log(user);
-
-  // const userName = user?.map((name) => {
-  //   return name.user_firstname;
-  // });
-
-  // const [userName, setUserName] = useState("");
 
   const [showDrop, setShowDrop] = useState(false);
 
-  const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
-
-  // console.log(sendToLocal.length);
-
-  // console.log(user[0].user_firstname);
-
-  // console.log(quantity);
-
-  //
-
-  // useEffect(() => {
-  //   const products = JSON.parse(window.localStorage.getItem("product"));
-  //   if (products) {
-  //     setCart(products);
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   const qty = JSON.parse(window.localStorage.getItem("qty"));
-  //   if (qty) {
-  //     setQuantity(qty);
-  //   }
-  // }, []);
   ////////////////////////MODAL
 
   const [show, setShow] = useContext(LoginModalContext);
   const { cart, setCart } = useContext(CartContext);
-
-  // const [clickTarget, setClickTarget] = useSatte('')
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -105,12 +74,9 @@ function Header({ qty }) {
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
     document.addEventListener("keydown", handleDivBack);
-    // document.addEventListener("click", handleDivBack, true);
 
     document.addEventListener("change", handleClickOutside, true);
-    // cartTotal();
   }, []);
-  // }, [clickTarget]);
 
   const handleClickOutside = (e) => {
     if (!searchDivRef.current.contains(e.target)) {
@@ -126,16 +92,12 @@ function Header({ qty }) {
     const quantities = cart.map((product) => {
       return product.quantity;
     });
-    // setQuantity(quantities);
-    const sum = quantities.reduce((prev, cur) => prev + cur, 0);
-    // console.log(sum);
-    // setQuantity(sum);
 
-    // setSendToLocal(sum);
+    const sum = quantities.reduce((prev, cur) => prev + cur, 0);
+
     return sum;
   };
 
-  // cartTotal();
   return (
     <>
       <Navbar bg="light" expand="lg" className="navbar-fix-top bottom-border">
@@ -184,7 +146,8 @@ function Header({ qty }) {
               </Link> */}
               <Link className="cart color" to="/cart">
                 <Badge
-                  badgeContent={cartTotal() || sendToLocal.length}
+                  badgeContent={cartTotal()}
+                  // badgeContent={sendToLocal.length}
                   color="primary"
                 >
                   {/* <Badge badgeContent={cartTotal()} color="primary"> */}

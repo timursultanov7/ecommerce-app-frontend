@@ -2,6 +2,7 @@
 
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+// import useLocalStorage from "../components/useLocalStorage";
 
 // import { Nav } from "react-bootstrap";
 // import Footer from "../components/Footer";
@@ -32,6 +33,12 @@ function Cart({
     totalPrice,
   } = useContext(CartContext);
 
+  // const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
+
+  // console.log(sendToLocal);
+  // console.log(cart);
+
+  // console.log(cart);
   // useEffect(() => {
   //   window.localStorage.setItem("product", JSON.stringify(cart));
   // }, [cart]);
@@ -77,6 +84,7 @@ function Cart({
       });
 
       setCart(filterCart);
+      // setSendToLocal(filterCart);
     }
   };
   return (
@@ -100,12 +108,20 @@ function Cart({
                     <button
                       onClick={() => {
                         onMinus(item);
+                        // setSendToLocal(item);
                       }}
                     >
                       -
                     </button>
                     <p>{item.quantity}</p>
-                    <button onClick={() => handleAdd(item)}>+</button>
+                    <button
+                      onClick={() => {
+                        handleAdd(item);
+                        // setSendToLocal(item);
+                      }}
+                    >
+                      +
+                    </button>
                   </div>
                   <button onClick={() => onRemove(item.product_id)}>
                     Remove

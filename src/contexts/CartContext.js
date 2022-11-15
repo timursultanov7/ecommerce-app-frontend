@@ -1,28 +1,15 @@
 /** @format */
 
 import React, { createContext, useState, useEffect } from "react";
-import useLocalStorage from "../components/useLocalStorage";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const cartFromLocal = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
-  // const [cartToLocal, setCartToLocal] = useLocalStorage(cart, "");
+  console.log(cartFromLocal);
 
-  // Local storage
-
-  // useEffect(() => {
-  //   const products = JSON.parse(localStorage.getItem("product"));
-  //   if (products) {
-  //     setCart(products);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("product", JSON.stringify(cart));
-  // }, [cart]);
+  const [cart, setCart] = useState(cartFromLocal);
 
   const shipping = 20;
 
@@ -48,13 +35,14 @@ export const CartProvider = ({ children }) => {
             : item
         )
       );
-
-      // setSendToLocal(cart);
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
-      setSendToLocal(cart);
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <CartContext.Provider

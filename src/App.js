@@ -9,6 +9,8 @@ import { CartContext } from "./contexts/CartContext";
 import { LoginModalProvider } from "./contexts/LoginModalContext";
 import { ProductsProvider } from "./contexts/ProductsContext";
 
+// import useLocalStorage from "./components/useLocalStorage";
+
 // Importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -39,23 +41,6 @@ function App() {
 
   const [quantity, setQuantity] = useState(0);
 
-  // function handleAdd(product) {
-  //   const exist = cart.find((item) => item.product_id === product.product_id);
-
-  //   if (exist) {
-  //     setCart(
-  //       cart.map((item) =>
-  //         item.product_id === product.product_id
-  //           ? { ...exist, quantity: exist.quantity + 1 }
-  //           : item
-  //       )
-  //     );
-  //   } else {
-  //     setCart([...cart, { ...product, quantity: 1 }]);
-  //     // console.log(cart);
-  //   }
-  // }
-
   function handleRemove(product) {
     const exist = cart.find((item) => item.product_id === product.product_id);
 
@@ -71,13 +56,14 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className="App">
       <LoginProvider>
         <LoginModalProvider>
           <Routes>
             <Route
-              path='/'
-              element={<SharedLayout qty={{ quantity, setQuantity }} />}>
+              path="/"
+              element={<SharedLayout qty={{ quantity, setQuantity }} />}
+            >
               <Route
                 index
                 element={
@@ -90,7 +76,7 @@ function App() {
               />
 
               <Route
-                path='/search'
+                path="/search"
                 element={
                   <CategoryProvider>
                     <ProductsProvider>
@@ -101,43 +87,34 @@ function App() {
               />
 
               <Route
-                path='/cart'
+                path="/cart"
                 element={
                   <Cart
-                    // onAdd={handleAdd}
                     onMinus={handleRemove}
                     qty={{ quantity, setQuantity }}
                   />
                 }
               />
-              <Route path='/catalogue' element={<Catalogue />} />
+              <Route path="/catalogue" element={<Catalogue />} />
               <Route
-                path='/:type'
+                path="/:type"
                 element={
                   <CategoryProvider>
                     {" "}
-                    <Category
-                      // onAdd={handleAdd}
-                      qty={{ quantity, setQuantity }}
-                    />
+                    <Category qty={{ quantity, setQuantity }} />
                   </CategoryProvider>
                 }
               />
               <Route
-                path='/product/:id'
-                element={
-                  <Product
-                    //  onAdd={handleAdd}
-                    qty={{ quantity, setQuantity }}
-                  />
-                }
+                path="/product/:id"
+                element={<Product qty={{ quantity, setQuantity }} />}
               />
-              <Route path='*' element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
 
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/checkout' element={<Checkout />} />
-            <Route path='/thanks' element={<ThanksPage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/thanks" element={<ThanksPage />} />
           </Routes>
         </LoginModalProvider>
       </LoginProvider>
