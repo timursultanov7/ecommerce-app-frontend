@@ -6,27 +6,17 @@ import { Link } from "react-router-dom";
 
 import "../styles/categories.css";
 
-function Categories() {
-  const gridCategories = [
-    { id: 1, name: "Fruits", class: "fruits" },
-    { id: 2, name: "Cereals", class: "cereals" },
-    { id: 3, name: "Grains", class: "grains" },
-    { id: 4, name: "Alcohol", class: "alcohol" },
-    { id: 5, name: "Vegan", class: "vegan" },
-    { id: 6, name: "Drinks", class: "drinks" },
-    { id: 7, name: "Meat", class: "meat" },
-    { id: 8, name: "Dairy", class: "dairy" },
-    { id: 9, name: "Vegetables", class: "vegetables" },
-  ];
+function Categories({ gridCategories }) {
   return (
-    <div className='grid-wrapper'>
+    <div className="grid-wrapper">
       {gridCategories.map((category) => {
         return (
           <Link
             key={category.id}
             to={`/${category.name}`}
-            className={`grid-item  ${category.class}`}>
-            <span className='title-cat'>{category.name}</span>{" "}
+            className={`grid-item  ${category.class}`}
+          >
+            <span className="title-cat">{category.name}</span>{" "}
           </Link>
         );
       })}

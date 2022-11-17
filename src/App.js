@@ -35,8 +35,21 @@ import "./App.css";
 import "./styles/variables.css";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { LoginProvider } from "../src/contexts/LoginContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
+  const gridCategories = [
+    { id: 1, name: "Fruits", class: "fruits" },
+    { id: 2, name: "Cereals", class: "cereals" },
+    { id: 3, name: "Grains", class: "grains" },
+    { id: 4, name: "Alcohol", class: "alcohol" },
+    { id: 5, name: "Vegan", class: "vegan" },
+    { id: 6, name: "Drinks", class: "drinks" },
+    { id: 7, name: "Meat", class: "meat" },
+    { id: 8, name: "Dairy", class: "dairy" },
+    { id: 9, name: "Vegetables", class: "vegetables" },
+  ];
+
   const { cart, setCart } = useContext(CartContext);
 
   const [quantity, setQuantity] = useState(0);
@@ -57,8 +70,29 @@ function App() {
 
   return (
     <div className="App">
+      {/* ROUTES */}
+
+      {/* 
+     
+     
+     1. HOME = '/'
+     2. SEARCH PAGE = '/search'
+     3. CART = '/cart'
+     4. CATALOGUE = '/catalogue'
+     5. CATEGORY = '/:type'
+     6. PRODUCT = '/product/:id'
+     7. NOT FOUND 404 = '*'
+     8. SIGN UP = '/signup'
+     9. CHECKOUT = '/checkout'
+     10. THANKS PAGE = '/thanks'
+     
+     
+     
+     
+      */}
       <LoginProvider>
         <LoginModalProvider>
+          {/* <ErrorBoundary> */}
           <Routes>
             <Route
               path="/"
@@ -95,16 +129,27 @@ function App() {
                   />
                 }
               />
-              <Route path="/catalogue" element={<Catalogue />} />
+              <Route
+                path="/catalogue"
+                element={<Catalogue gridCategories={gridCategories} />}
+              />
+
+              {/* <ErrorBoundary> */}
               <Route
                 path="/:type"
                 element={
                   <CategoryProvider>
                     {" "}
-                    <Category qty={{ quantity, setQuantity }} />
+                    <ErrorBoundary>
+                      <Category
+                        gridCategories={gridCategories}
+                        qty={{ quantity, setQuantity }}
+                      />
+                    </ErrorBoundary>
                   </CategoryProvider>
                 }
               />
+              {/* </ErrorBoundary> */}
               <Route
                 path="/product/:id"
                 element={<Product qty={{ quantity, setQuantity }} />}
@@ -116,6 +161,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/thanks" element={<ThanksPage />} />
           </Routes>
+          {/* </ErrorBoundary> */}
         </LoginModalProvider>
       </LoginProvider>
     </div>

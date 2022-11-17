@@ -83,26 +83,26 @@ export default function Checkout() {
   // const name = getValues("firstName");
 
   return (
-    <div className='container'>
-      <header className='checkout-header '>
-        <Link to='/'>
+    <div className="container">
+      <header className="checkout-header ">
+        <Link to="/">
           <div>
-            <img className='logo-home' src={logo} alt='' />
+            <img className="logo-home" src={logo} alt="" />
           </div>
         </Link>
         <p>
-          <Link className='return-cart' to='/cart'>
+          <Link className="return-cart" to="/cart">
             Return To Cart
           </Link>
         </p>
       </header>
 
-      <h4 className='title'>Contact info</h4>
-      <section className='checkout-wrapper'>
-        <main className='form-wrapper'>
+      <h4 className="title">Contact info</h4>
+      <section className="checkout-wrapper">
+        <main className="form-wrapper">
           <form
-            id='checkout-form'
-            className='form-container'
+            id="checkout-form"
+            className="form-container"
             onSubmit={handleSubmit((order) => {
               console.log(order);
 
@@ -124,13 +124,14 @@ export default function Checkout() {
 
               navigate("/thanks");
               // setShow(true); // show modal
-            })}>
-            <div className='join-container'>
-              <div className='grow-container'>
+            })}
+          >
+            <div className="join-container">
+              <div className="grow-container">
                 <label> First Name:</label>
                 <input
-                  type='text'
-                  placeholder='First name'
+                  type="text"
+                  placeholder="First name"
                   {...register("firstname", {
                     required: "This is required",
                     pattern: {
@@ -143,15 +144,15 @@ export default function Checkout() {
                     },
                   })}
                 />
-                <p className='err-val-msg'>{errors.firstname?.message}</p>
+                <p className="err-val-msg">{errors.firstname?.message}</p>
               </div>
 
-              <div className='grow-container'>
+              <div className="grow-container">
                 <label> Last Name</label>
                 <input
-                  className='join-margin'
-                  type='text'
-                  placeholder='Last name'
+                  className="join-margin"
+                  type="text"
+                  placeholder="Last name"
                   {...register("lastname", {
                     required: "This is required",
                     pattern: /^[A-Za-z]+$/i,
@@ -161,28 +162,28 @@ export default function Checkout() {
                     },
                   })}
                 />
-                <p className='err-val-msg'> {errors.lastname?.message}</p>
+                <p className="err-val-msg"> {errors.lastname?.message}</p>
               </div>
             </div>
 
-            <div className='grow-container margin-bot'>
+            <div className="grow-container margin-bot">
               <label> Address: </label>
               <input
-                type='text'
-                placeholder='Address'
+                type="text"
+                placeholder="Address"
                 {...register("address", {
                   required: "This is required",
                 })}
               />
-              <p className='err-val-msg'> {errors.address?.message}</p>
+              <p className="err-val-msg"> {errors.address?.message}</p>
             </div>
 
-            <div className='join-container'>
-              <div className='grow-container'>
+            <div className="join-container">
+              <div className="grow-container">
                 <label> Email: </label>
                 <input
-                  type='email'
-                  placeholder='Email'
+                  type="email"
+                  placeholder="Email"
                   {...register("email", {
                     required: "This is required",
                     minLength: {
@@ -191,14 +192,14 @@ export default function Checkout() {
                     },
                   })}
                 />
-                <p className='err-val-msg'> {errors.email?.message}</p>
+                <p className="err-val-msg"> {errors.email?.message}</p>
               </div>
-              <div className='grow-container'>
+              <div className="grow-container">
                 <label> Phone: </label>
                 <input
-                  className='join-margin'
-                  type='number'
-                  placeholder='Phone'
+                  className="join-margin"
+                  type="number"
+                  placeholder="Phone"
                   {...register("phone", {
                     required: " * This is required",
                     minLength: {
@@ -207,19 +208,19 @@ export default function Checkout() {
                     },
                   })}
                 />
-                <p className='err-val-msg'> {errors.phone?.message}</p>
+                <p className="err-val-msg"> {errors.phone?.message}</p>
               </div>
             </div>
 
-            <h5 className='title'>Payment</h5>
+            <h5 className="title">Payment</h5>
             {/* <label>Card number</label> */}
-            <div className='payment-container'>
-              <div className='grow-container cardnumber-container'>
+            <div className="payment-container">
+              <div className="grow-container cardnumber-container">
                 <label> Card Number: </label>
                 <input
-                  type='text'
+                  type="text"
                   maxLength={16}
-                  placeholder='1234 1234 1234 1234'
+                  placeholder="1234 1234 1234 1234"
                   {...register("cardnumber", {
                     required: "This is required",
                     maxLength: {
@@ -228,15 +229,15 @@ export default function Checkout() {
                     },
                   })}
                 />
-                <p className='err-val-msg'> {errors.cardnumber?.message}</p>
+                <p className="err-val-msg"> {errors.cardnumber?.message}</p>
               </div>
-              <div className='card-container'>
-                <div className='grow-container'>
+              <div className="card-container">
+                <div className="grow-container">
                   <label> Month: </label>
                   <input
-                    type='number'
+                    type="number"
                     maxLength={2}
-                    placeholder='MM'
+                    placeholder="MM"
                     {...register("expmonth", {
                       required: "This is required",
                       maxLength: {
@@ -244,28 +245,28 @@ export default function Checkout() {
                       },
                     })}
                   />
-                  <p className='err-val-msg'>{errors.expmonth?.message}</p>
+                  <p className="err-val-msg">{errors.expmonth?.message}</p>
                 </div>
-                <div className='grow-container'>
+                <div className="grow-container">
                   <label>Year: </label>
                   <input
-                    type='number'
-                    placeholder='YY'
+                    type="number"
+                    placeholder="YY"
                     {...register("expyear", {
                       required: " * This is required",
-                      max: {
+                      maxLength: {
                         value: 2,
                         message: "* Max 2 numbers",
                       },
                     })}
                   />
-                  <p className='err-val-msg'> {errors.expyear?.message}</p>
+                  <p className="err-val-msg"> {errors.expyear?.message}</p>
                 </div>
-                <div className='grow-container'>
+                <div className="grow-container">
                   <label> CVV: </label>
                   <input
-                    type='password'
-                    placeholder='123'
+                    type="password"
+                    placeholder="123"
                     {...register("cvv", {
                       required: " * This is required",
                       maxLength: {
@@ -273,7 +274,7 @@ export default function Checkout() {
                       },
                     })}
                   />
-                  <p className='err-val-msg'>{errors.cvv?.message}</p>
+                  <p className="err-val-msg">{errors.cvv?.message}</p>
                 </div>
               </div>
             </div>
@@ -281,40 +282,42 @@ export default function Checkout() {
         </main>
 
         {/* ASIDE */}
-        <aside className='summary-wrapper'>
-          <div className='summary-container'>
+        <aside className="summary-wrapper">
+          <div className="summary-container">
             {/* <MDBCol md='4' className='mb-4'>
             <MDBCard className='mb-4'> */}
-            <MDBCardHeader className='py-3'>
-              <h5 className='summary-title'>Summary</h5>
+            <MDBCardHeader className="py-3">
+              <h5 className="summary-title">Summary</h5>
             </MDBCardHeader>
 
             <MDBCardBody>
               <MDBListGroup flush>
                 {cart.map((product) => {
                   return (
-                    <div className='checkout-products' key={product.product_id}>
-                      <p>{product.product_name}</p>
+                    <div className="checkout-products" key={product.product_id}>
+                      <p className="product-name">{product.product_name}</p>
                       <p>Qty {product.quantity} </p>
                       <p>$ {product.product_price}</p>
                       {/* <p>{product.product_name}</p> */}
                     </div>
                   );
                 })}
-                <MDBListGroupItem className='d-flex justify-content-between align-items-center border-0 px-0 pb-0'>
+
+                <hr className="my-2"></hr>
+
+                <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Subtotal
                   <span>${subTotalPrice}</span>
                 </MDBListGroupItem>
-                <MDBListGroupItem className='d-flex justify-content-between align-items-center border-0 px-0 pb-0'>
+                <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Shipping
                   <span>${shipping}</span>
                 </MDBListGroupItem>
-                <hr className='my-2'></hr>
-                <MDBListGroupItem className='d-flex justify-content-between align-items-center border-0 px-0 pb-0'>
+                <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   <div>
                     <strong>Total amount</strong>
                     <strong>
-                      <p className='mb-0'>(including VAT)</p>
+                      <p className="mb-0">(including VAT)</p>
                     </strong>
                   </div>
                   <span>
@@ -323,13 +326,13 @@ export default function Checkout() {
                 </MDBListGroupItem>
               </MDBListGroup>
             </MDBCardBody>
-            <div className='checkout-btn-container'>
+            <div className="checkout-btn-container">
               <input
                 // className={`${!disable ? "input-disabled" : "checkout-btn"}`}
-                className='checkout-btn'
-                type='submit'
-                form='checkout-form'
-                value='Place order'
+                className="checkout-btn"
+                type="submit"
+                form="checkout-form"
+                value="Place order"
                 disabled={
                   (firstname &&
                     lastname &&

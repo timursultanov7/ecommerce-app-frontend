@@ -23,7 +23,7 @@ import ProductCard from "../components/ProductCard";
 import Sort from "../components/Sort";
 // import Cart from "./Cart";
 
-export const Category = ({ onAdd, qty }) => {
+export const Category = ({ onAdd, qty, gridCategories }) => {
   const { quantity, setQuantity } = qty;
   // console.log(quantity);
   const { cart, setCart } = useContext(CartContext);
@@ -47,6 +47,23 @@ export const Category = ({ onAdd, qty }) => {
   const [searchArray, setSearchArray] = useState([]);
 
   const params = useParams();
+
+  // console.log(catgProducts);
+
+  const checkingUrl = () => {
+    const itemName = gridCategories.map((item) => {
+      return item.name;
+    });
+    // console.log(itemName);
+
+    if (!itemName.includes(params.type)) {
+      throw new Error("Category does not exist");
+    }
+  };
+
+  checkingUrl();
+
+  // console.log(params.type);
 
   const getProducts = async () => {
     try {

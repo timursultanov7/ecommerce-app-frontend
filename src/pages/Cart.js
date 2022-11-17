@@ -2,11 +2,6 @@
 
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import useLocalStorage from "../components/useLocalStorage";
-
-// import { Nav } from "react-bootstrap";
-// import Footer from "../components/Footer";
-// import Header from "../components/Header";
 
 import "../styles/categories.css";
 
@@ -16,11 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 
-function Cart({
-  // onAdd,
-  onMinus,
-  qty,
-}) {
+function Cart({ onMinus, qty }) {
   const { quantity, setQuantity } = qty;
   const {
     cart,
@@ -32,46 +23,6 @@ function Cart({
     taxes,
     totalPrice,
   } = useContext(CartContext);
-
-  // const [sendToLocal, setSendToLocal] = useLocalStorage("product", "");
-
-  // console.log(sendToLocal);
-  // console.log(cart);
-
-  // console.log(cart);
-  // useEffect(() => {
-  //   window.localStorage.setItem("product", JSON.stringify(cart));
-  // }, [cart]);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("qty", JSON.stringify(quantity));
-  // }, [quantity]);
-
-  // useEffect(() => {
-  //   const products = JSON.parse(window.localStorage.getItem("product"));
-  //   if (products) {
-  //     setCart(products);
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   const qty = JSON.parse(window.localStorage.getItem("qty"));
-  //   if (qty) {
-  //     setQuantity(qty);
-  //   }
-  // }, []);
-
-  // const shipping = 20;
-
-  // const taxInterest = 0.17;
-
-  // const subTotalPrice = cart.reduce(
-  //   (a, c) => a + c.product_price * c.quantity,
-  //   0
-  // );
-
-  // const taxes = taxInterest * subTotalPrice;
-
-  // const totalPrice = subTotalPrice + shipping + subTotalPrice * taxInterest;
 
   const onRemove = (id) => {
     const exist = cart.find((item) => {
@@ -106,24 +57,32 @@ function Cart({
 
                   <div className="cart-quantity--btns">
                     <button
+                      className="btn-qty"
                       onClick={() => {
                         onMinus(item);
                         // setSendToLocal(item);
                       }}
                     >
-                      -
+                      <span>-</span>
                     </button>
-                    <p>{item.quantity}</p>
+
+                    <p className="item-qty">
+                      <span>{item.quantity}</span>
+                    </p>
                     <button
+                      className="btn-qty"
                       onClick={() => {
                         handleAdd(item);
                         // setSendToLocal(item);
                       }}
                     >
-                      +
+                      <span>+</span>
                     </button>
                   </div>
-                  <button onClick={() => onRemove(item.product_id)}>
+                  <button
+                    onClick={() => onRemove(item.product_id)}
+                    className="btn-remove"
+                  >
                     Remove
                   </button>
                   {/* <p className='cart-product--info'>{item.product_description}</p> */}
@@ -139,25 +98,29 @@ function Cart({
           </section>
           <aside className="cart-wrapper-summary">
             <div className="cart-summary">
-              <h2>Order Summary</h2>
-              {/* <p>{total}</p> */}
-              <p>
-                <strong>Subtotal: </strong>${subTotalPrice.toFixed(2)}
-              </p>
-              <p>
-                <strong>Shipping: </strong>${shipping}
-              </p>
-              <p>
-                <strong>Taxes: </strong>${taxes.toFixed(2)}
-              </p>
+              <div className="order-summary">
+                <h2>Order Summary</h2>
+                {/* <p>{total}</p> */}
+                <p>
+                  <strong>Subtotal: </strong>${subTotalPrice.toFixed(2)}
+                </p>
+                <p>
+                  <strong>Shipping: </strong>${shipping}
+                </p>
+                <p>
+                  <strong>Taxes: </strong>${taxes.toFixed(2)}
+                </p>
 
-              <p>
-                <strong>Total: </strong>${totalPrice.toFixed(2)}
-              </p>
-              <br />
+                <p>
+                  <strong>Total: </strong>${totalPrice.toFixed(2)}
+                </p>
+                <br />
+              </div>
 
-              <button>
+              <div>
+                {/* <button className="checkout-btn"> */}
                 <Link
+                  className="checkout-btn"
                   to={{
                     pathname: "/checkout",
                     state: {},
@@ -165,7 +128,8 @@ function Cart({
                 >
                   Checkout
                 </Link>
-              </button>
+              </div>
+              {/* </button> */}
             </div>
           </aside>
         </div>
