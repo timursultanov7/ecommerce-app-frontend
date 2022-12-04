@@ -1,14 +1,14 @@
 .logo-home {
- 
   text-decoration: none;
   color: black;
   max-width: 7vw;
 }
 
-.cart, .login-btn {
+.cart,
+.login-btn {
   text-decoration: none;
   margin-right: 1rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -26,23 +26,21 @@
 }
 
 .bottom-border {
-  border-bottom: 1px solid rgb(var(--grey3,235,235,235))
+  border-bottom: 1px solid rgb(var(--grey3, 235, 235, 235));
 }
 
 .cat-btn {
   border: 1px solid #fff;
   margin-left: 1rem;
-  padding: .6rem;
-  border-radius:12px;
+  padding: 0.6rem;
+  border-radius: 12px;
   color: #fff;
-  font-size: .9rem;
-  background-color: #1363DF;
+  font-size: 0.9rem;
+  background-color: #1363df;
   font-weight: 500;
   text-decoration: none;
-  transition: .3s;
-   /* pointer-events: inherit; */
-
-  
+  transition: 0.3s;
+  /* pointer-events: inherit; */
 }
 
 .cat-btn:hover {
@@ -53,21 +51,53 @@
 }
 
 .login-btn {
- cursor: pointer;
+  cursor: pointer;
 }
 
 .color {
-  color: #1363DF;
-
+  color: #1363df;
 }
 
 .css-cveggr-MuiListItemIcon-root {
- min-width: 20px !important;
+  min-width: 20px !important;
 }
 
-.avatar-container{
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: row;
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.nav-480 {
+  display: none;
+}
+
+/* MEDIA QUARIES */
+
+@media screen and (max-width: 480px) {
+  .nav-wrapper {
+    display: none;
+  }
+
+  .nav-480 {
+    display: block;
+    width: 480px;
+    background-color: #1363df;
+    padding: 1.2rem;
+  }
+  .nav-480-container {
+    display: flex;
+    gap: 0.5rem;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+
+  .logo-home {
+    filter: brightness(0) invert(1);
+    max-width: 15vw;
+  }
+  .div-nav-480 {
+    /* max-width: 12vw; */
+  }
 }

@@ -36,6 +36,8 @@ import "./styles/variables.css";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { LoginProvider } from "../src/contexts/LoginContext";
 import ErrorBoundary from "./components/ErrorBoundary";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
 function App() {
   const gridCategories = [
@@ -164,6 +166,28 @@ function App() {
           {/* </ErrorBoundary> */}
         </LoginModalProvider>
       </LoginProvider>
+
+      <BottomNavigation
+        className="bottom-nav"
+        showLabels
+        // value={value}
+        onChange={(event, newValue) => {
+          // setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction
+          label="Recents"
+          // icon={<RestoreIcon />}
+        />
+        <BottomNavigationAction
+          label="Favorites"
+          //  icon={<FavoriteIcon />}
+        />
+        <BottomNavigationAction
+          label="Nearby"
+          //  icon={<LocationOnIcon />}
+        />
+      </BottomNavigation>
     </div>
   );
 }

@@ -26,6 +26,9 @@ import {
 
 import Badge from "@mui/material/Badge";
 
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
 import {
   Navbar,
   Container,
@@ -100,7 +103,22 @@ function Header({ qty }) {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" className="navbar-fix-top bottom-border">
+      <nav className="nav-480">
+        <div className="nav-480-container">
+          <Link to="/">
+            <div className="div-nav-480">
+              <img className="logo-home" src={logo} alt="logo" />
+            </div>
+          </Link>
+          <SearchBar />
+        </div>
+      </nav>
+
+      <Navbar
+        bg="light"
+        expand="lg"
+        className="navbar-fix-top bottom-border nav-wrapper nav-wrapper-480"
+      >
         <Container fluid className="container">
           <Link to="/">
             <div>
@@ -118,11 +136,11 @@ function Header({ qty }) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Link className="cat-btn" to="/catalogue">
-                {/* <FontAwesomeIcon icon='fa-solid fa-bars' /> */}
+              {/* <Link className="cat-btn" to="/catalogue">
+            
                 <FontAwesomeIcon icon={faBarsStaggered} /> &nbsp;
                 <span>Catalogue</span>
-              </Link>
+              </Link> */}
 
               {/* <NavDropdown title='Location' id='navbarScrollingDropdown'>
                 <NavDropdown.Item href='#action3'>Netanya</NavDropdown.Item>
@@ -135,11 +153,11 @@ function Header({ qty }) {
               </Nav.Link> */}
             </Nav>
 
-            <SearchBar
+            {/* <SearchBar
               searchDivRef={searchDivRef}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
-            />
+            /> */}
             <div className="d-flex justify-content-md-center ">
               {/* <Link className='cart' to='/cart'>
                 Cart <span className='cart-badge'>({cartTotal()})</span>
@@ -214,6 +232,28 @@ function Header({ qty }) {
         <input type='text' />
       </div>
       <div></div> */}
+
+      {/* <BottomNavigation
+        className="bottom-nav"
+        showLabels
+        // value={value}
+        onChange={(event, newValue) => {
+          // setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction
+          label="Recents"
+          // icon={<RestoreIcon />}
+        />
+        <BottomNavigationAction
+          label="Favorites"
+          //  icon={<FavoriteIcon />}
+        />
+        <BottomNavigationAction
+          label="Nearby"
+          //  icon={<LocationOnIcon />}
+        />
+      </BottomNavigation> */}
     </>
   );
 }
