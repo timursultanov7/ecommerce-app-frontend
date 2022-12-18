@@ -82,13 +82,16 @@
 
   .nav-480 {
     display: block;
-    width: 480px;
+    max-width: 100vw;
     background-color: #1363df;
     padding: 1.2rem;
+    /* border: 1px solid red; */
   }
   .nav-480-container {
     display: flex;
     gap: 0.5rem;
+    /* border: 3px solid red; */
+
     /* justify-content: center; */
     /* align-items: center; */
   }

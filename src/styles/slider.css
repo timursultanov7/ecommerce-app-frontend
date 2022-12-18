@@ -1,13 +1,12 @@
+.slider-img {
+  height: 40vh;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
 
-
-
-
-.carousel-img {
-    height: 40vh;
-    object-fit: cover;
-    border-radius: 20px;
-  
-
+.carousel-inner {
+  /* width: 90s; */
 }
 /* 
 .slider-container {
@@ -18,6 +17,33 @@
     
 }
  */
-.carousel-control-prev, .carousel-control-next {
-    z-index: 0;
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 0;
+}
+
+/* MEDIA QUARIES */
+@media screen and (max-width: 900px) {
+  .carousel,
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+
+  .slider-img {
+  }
+}
+@media screen and (max-width: 480px) {
+  .slider-img {
+    height: 25vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .slider-container {
+    width: 100% !important;
+  }
 }

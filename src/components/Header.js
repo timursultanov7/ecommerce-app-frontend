@@ -110,7 +110,11 @@ function Header({ qty }) {
               <img className="logo-home" src={logo} alt="logo" />
             </div>
           </Link>
-          <SearchBar />
+          <SearchBar
+            searchDivRef={searchDivRef}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
         </div>
       </nav>
 
@@ -118,6 +122,7 @@ function Header({ qty }) {
         bg="light"
         expand="lg"
         className="navbar-fix-top bottom-border nav-wrapper nav-wrapper-480"
+        // className="navbar-fix-top bottom-border "
       >
         <Container fluid className="container">
           <Link to="/">
@@ -136,11 +141,10 @@ function Header({ qty }) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              {/* <Link className="cat-btn" to="/catalogue">
-            
+              <Link className="cat-btn" to="/catalogue">
                 <FontAwesomeIcon icon={faBarsStaggered} /> &nbsp;
                 <span>Catalogue</span>
-              </Link> */}
+              </Link>
 
               {/* <NavDropdown title='Location' id='navbarScrollingDropdown'>
                 <NavDropdown.Item href='#action3'>Netanya</NavDropdown.Item>
@@ -153,11 +157,11 @@ function Header({ qty }) {
               </Nav.Link> */}
             </Nav>
 
-            {/* <SearchBar
+            <SearchBar
               searchDivRef={searchDivRef}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
-            /> */}
+            />
             <div className="d-flex justify-content-md-center ">
               {/* <Link className='cart' to='/cart'>
                 Cart <span className='cart-badge'>({cartTotal()})</span>

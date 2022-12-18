@@ -3,7 +3,7 @@
 /** @format */
 
 import { useContext, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 import { CartContext } from "./contexts/CartContext";
 import { LoginModalProvider } from "./contexts/LoginModalContext";
@@ -28,6 +28,7 @@ import Signup from "./pages/Signup";
 import SharedLayout from "../src/layout/SharedLayout";
 import Checkout from "./pages/Checkout";
 import ThanksPage from "./pages/ThanksPage";
+import LoginPage from "./pages/LoginPage";
 // import { categoriesArray } from "./categoriesArray";
 
 import "./App.css";
@@ -36,8 +37,23 @@ import "./styles/variables.css";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { LoginProvider } from "../src/contexts/LoginContext";
 import ErrorBoundary from "./components/ErrorBoundary";
+
+// MU bottom nav
+
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MenuIcon from "@mui/icons-material/Menu";
+import PersonIcon from "@mui/icons-material/Person";
+
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faBarsStaggered,
+//   faCartShopping,
+//   faUser,
+//   faRightFromBracket,
+// } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const gridCategories = [
@@ -162,32 +178,45 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/thanks" element={<ThanksPage />} />
+            <Route path="/login-page" element={<LoginPage />} />
           </Routes>
           {/* </ErrorBoundary> */}
         </LoginModalProvider>
       </LoginProvider>
 
-      <BottomNavigation
-        className="bottom-nav"
-        showLabels
-        // value={value}
-        onChange={(event, newValue) => {
-          // setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction
-          label="Recents"
-          // icon={<RestoreIcon />}
-        />
-        <BottomNavigationAction
-          label="Favorites"
-          //  icon={<FavoriteIcon />}
-        />
-        <BottomNavigationAction
-          label="Nearby"
-          //  icon={<LocationOnIcon />}
-        />
-      </BottomNavigation>
+      <div className="bottom-nav-wrapper">
+        <BottomNavigation
+          className="bottom-nav"
+          showLabels
+          // value={value}
+          onChange={(event, newValue) => {
+            // setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction
+            icon={
+              <Link to={"/cart"}>
+                <ShoppingCartIcon style={{ fill: "#1363df" }} />
+              </Link>
+            }
+          />
+
+          <BottomNavigationAction
+            icon={
+              <Link to={"/catalogue"}>
+                <MenuIcon style={{ fill: "#1363df" }} />
+              </Link>
+            }
+          />
+          <BottomNavigationAction
+            icon={
+              <Link to={"/login-page"}>
+                <PersonIcon style={{ fill: "#1363df" }} />
+              </Link>
+            }
+          />
+        </BottomNavigation>
+      </div>
     </div>
   );
 }

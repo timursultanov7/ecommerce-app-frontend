@@ -314,3 +314,16 @@ vegan dairy vegetables
   margin: 0;
   text-align: center;
 }
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 480px) {
+  .grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .grid-item {
+    height: 10vh;
+  }
+}

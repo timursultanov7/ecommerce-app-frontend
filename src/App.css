@@ -7,7 +7,7 @@
   font-family: "Roboto", sans-serif;
 }
 .app-container {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   padding: 6rem 0;
 }
@@ -61,6 +61,9 @@
   height: 100%;
   overflow: scroll;
 }
+.bottom-nav-wrapper {
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -75,11 +78,39 @@
 @media screen and (max-width: 480px) {
   .App {
     position: relative;
+    width: 100%;
+    margin: 0;
+  }
+
+  .app-container {
+    max-width: 480px;
+    position: relative;
+    padding: 0;
+  }
+  .bottom-nav-wrapper {
+    display: block;
+    position: sticky;
+    bottom: 0;
   }
 
   .bottom-nav {
     /* position: absolute; */
-    position: sticky;
-    bottom: 0;
+    /* display: flex  */
+    /* position: sticky;
+    bottom: 0; */
+  }
+
+  .main-components-wrapper {
+    padding: 1rem;
+    overflow: scroll;
+    width: 100vw;
   }
 }
+
+/* @media screen and (max-width: 892px) {
+  .app-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+} */

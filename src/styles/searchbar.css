@@ -11,6 +11,8 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 25rem;
   border-radius: 15px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .search-color {
@@ -18,8 +20,13 @@
   background-color: #f2f2f2;
   border: none;
   border-radius: 5px;
-  /* padding: 0.7rem; */
+  /* border: 1px solid red; */
+  text-indent: 26px;
 }
+
+/* .search-color::placeholder {
+  padding-left: 2rem;
+} */
 
 .search-color:focus {
   outline: none !important;
@@ -40,11 +47,14 @@
 }
 
 .form {
-  /* width: %; */
+  width: 28vw;
+  position: relative;
+  /* border: 1px solid green;
+  padding: 1rem; */
 }
 
 .form-control {
-  padding: 0;
+  padding: 0.5rem;
 }
 .img-search-product {
   max-width: 20%;
@@ -59,9 +69,12 @@
 }
 
 .magnif-glass {
-  color: #1363df;
+  color: #868e96;
   font-size: 1.3rem;
   margin: 0.8rem 0 0 -7rem;
+  position: absolute;
+  top: 0;
+  left: 120px;
 
   /* t r b l */
 }
@@ -98,7 +111,14 @@
 /* MEDIA QUARIES */
 
 @media screen and (max-width: 480px) {
-  .input-group {
-    width: 70vw;
+  .form {
+    width: 60vw;
+  }
+
+  .search-list {
+    width: 100vw;
+    height: 90vh;
+    left: 0;
+    z-index: 9999;
   }
 }

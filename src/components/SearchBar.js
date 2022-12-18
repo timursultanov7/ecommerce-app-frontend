@@ -114,22 +114,20 @@ const SearchBar = ({ searchDivRef, isOpen, setIsOpen }) => {
     <>
       <div>
         <Form onSubmit={handleSubmit} className="form">
-          <InputGroup>
-            <FormControl
-              className="search-color"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              onChange={(e) => setSearchState(e.target.value)}
-              onClick={() => setIsOpen((prev) => !prev)}
+          <div className="magnif-glass-container">
+            <FontAwesomeIcon
+              className="magnif-glass"
+              icon={faMagnifyingGlass}
             />
-            <div className="magnif-glass-container">
-              <FontAwesomeIcon
-                className="magnif-glass"
-                icon={faMagnifyingGlass}
-              />
-            </div>
-          </InputGroup>
+          </div>
+          <FormControl
+            className="search-color"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            onChange={(e) => setSearchState(e.target.value)}
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
         </Form>
 
         <div
