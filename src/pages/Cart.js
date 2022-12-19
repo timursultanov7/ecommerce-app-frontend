@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
 function Cart({ onMinus, qty }) {
   const { quantity, setQuantity } = qty;
   const {
@@ -78,7 +80,15 @@ function Cart({ onMinus, qty }) {
                     >
                       <span>+</span>
                     </button>
+
+                    <div
+                      className="mobile-icon-remove"
+                      onClick={() => onRemove(item.product_id)}
+                    >
+                      <DeleteForeverIcon style={{ fontSize: "36px" }} />
+                    </div>
                   </div>
+
                   <button
                     onClick={() => onRemove(item.product_id)}
                     className="btn-remove"
@@ -89,13 +99,24 @@ function Cart({ onMinus, qty }) {
                   <div>
                     <p className="cart-product--price">
                       ${item.quantity * item.product_price}{" "}
-                      {/* <span> ${`${item.product_price} each`}</span> */}
                     </p>
                   </div>
                 </div>
               );
             })}
           </section>
+
+          <div className="mobile-nav-checkout">
+            <div className="left-nav">
+              <p className="mobile-total-price">${totalPrice}</p>
+            </div>
+            <div className="right-nav">
+              <Link className="mobile-checkout-btn" to="/checkout">
+                Checkout
+              </Link>
+            </div>
+          </div>
+
           <aside className="cart-wrapper-summary">
             <div className="cart-summary">
               <div className="order-summary">

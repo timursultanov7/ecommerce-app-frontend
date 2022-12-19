@@ -91,6 +91,7 @@
     display: block;
     position: sticky;
     bottom: 0;
+    border-top: 1px solid rgb(215, 215, 215);
   }
 
   .bottom-nav {

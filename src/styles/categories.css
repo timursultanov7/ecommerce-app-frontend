@@ -314,6 +314,13 @@ vegan dairy vegetables
   margin: 0;
   text-align: center;
 }
+.mobile-icon-remove {
+  display: none;
+}
+
+.mobile-nav-checkout {
+  display: none;
+}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 480px) {
@@ -325,5 +332,100 @@ vegan dairy vegetables
 
   .grid-item {
     height: 10vh;
+  }
+
+  .cart-product-wrapper {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .cart-products-container {
+    max-width: 100vw;
+  }
+
+  .cart-wrapper-summary {
+    display: none;
+  }
+  .cart-product {
+  }
+
+  .cart-product--title {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .cart-quantity--btns {
+    position: absolute;
+    left: 48%;
+    bottom: -15%;
+  }
+
+  .cart-product--img {
+    max-width: 30vw;
+  }
+
+  .btn-remove {
+    display: none;
+  }
+
+  .mobile-icon-remove {
+    margin-left: 2rem;
+    display: block;
+  }
+
+  .cart-product--img-name {
+    width: 100%;
+  }
+
+  .cart-product--price {
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+    color: rgb(109, 109, 109);
+    font-size: 20px;
+    font-weight: 500;
+    /* margin-left: 4rem; */
+  }
+  .btn-qty,
+  .item-qty {
+    height: 35px;
+    width: 35px;
+  }
+
+  .btn-qty span,
+  .item-qty span {
+    font-size: 1rem;
+  }
+
+  .mobile-nav-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    bottom: 55px;
+    padding: 1rem;
+    width: 100vw;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    /* height: 7vh; */
+  }
+  .mobile-total-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  .mobile-checkout-btn {
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.6rem 4rem;
+    color: #fff;
+    background-color: #1363df;
+
+    /* cursor: pointer; */
   }
 }
